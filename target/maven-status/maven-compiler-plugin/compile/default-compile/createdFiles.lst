@@ -1,4 +1,5 @@
-com\example\model\User.class
-com\example\Hello.class
-com\example\HelloHandler.class
-com\example\model\Greeting.class
+com\RecycleApp\Hello.class
+com\RecycleApp\HelloHandler.class
+com\RecycleApp\RecycleApp.class
+com\RecycleApp\model\User.class
+com\RecycleApp\model\Greeting.class

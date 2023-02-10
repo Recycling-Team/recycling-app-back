@@ -27,14 +27,14 @@
         <spring.cloud.function.dependencies>4.0.0</spring.cloud.function.dependencies>
 
         <!-- customize those five properties. The functionAppName should be unique across Azure -->
-        <functionResourceGroup>my-spring-function-resource-group</functionResourceGroup>
+        <functionResourceGroup>Recycle-App</functionResourceGroup>
         <functionAppServicePlanName>my-spring-function-service-plan</functionAppServicePlanName>
-        <functionAppName>RecyclingApp</functionAppName>
+        <functionAppName>recycle-app-back</functionAppName>
         <functionAppRegion>westeurope</functionAppRegion>
         <functionPricingTier>Y1</functionPricingTier>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
 
-        <start-class>com.example.DemoApplication</start-class>
+        <start-class>com.RecycleApp.RecycleApp</start-class>
     </properties>
 
     <dependencies>
