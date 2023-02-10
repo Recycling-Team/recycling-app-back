@@ -1,9 +1,9 @@
-package com.RecycleApp;
+package com.recycleapp;
 
 import org.springframework.stereotype.Component;
 
-import com.RecycleApp.model.Greeting;
-import com.RecycleApp.model.User;
+import com.recycleapp.model.Greeting;
+import com.recycleapp.model.User;
 
 import reactor.core.publisher.Mono;
 

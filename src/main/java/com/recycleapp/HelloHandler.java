@@ -1,4 +1,4 @@
-package com.RecycleApp;
+package com.recycleapp;
 
 import com.RecycleApp.model.Greeting;
 import com.RecycleApp.model.User;
