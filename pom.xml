@@ -31,7 +31,7 @@
         <functionAppServicePlanName>my-spring-function-service-plan</functionAppServicePlanName>
         <functionAppName>recycle-app-back</functionAppName>
         <functionAppRegion>westeurope</functionAppRegion>
-        <functionPricingTier>F1</functionPricingTier>
+        <functionPricingTier>Y1</functionPricingTier>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
 
         <start-class>com.RecycleApp.RecycleApp</start-class>
