@@ -1,7 +1,7 @@
 package com.recycleapp;
 
-import com.RecycleApp.model.Greeting;
-import com.RecycleApp.model.User;
+import com.recycleapp.model.Greeting;
+import com.recycleapp.model.User;
 import com.microsoft.azure.functions.*;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;

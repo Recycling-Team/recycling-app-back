@@ -21,7 +21,7 @@
 		7071
 	],
 	// After the container is created, install MVN dependencies and Azure Functions Core tools
-	"postCreateCommand": "mvn install && npm i -g azure-functions-core-tools@4"
+	"postCreateCommand": "npm i -g azure-functions-core-tools@4"
 	// Configure tool-specific properties.
 	// "customizations": {},
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
