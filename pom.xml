@@ -34,7 +34,7 @@
         <functionPricingTier>Y1</functionPricingTier>
         <stagingDirectory>${project.build.directory}/azure-functions/${functionAppName}</stagingDirectory>
 
-        <start-class>com.RecycleApp.RecycleApp</start-class>
+        <start-class>com.recycleapp.RecycleApp</start-class>
     </properties>
 
     <dependencies>
