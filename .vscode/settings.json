@@ -1,0 +1,5 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "azureFunctions.projectSubpath": "src/main/azure",
+    "java.configuration.updateBuildConfiguration": "interactive"
+}
