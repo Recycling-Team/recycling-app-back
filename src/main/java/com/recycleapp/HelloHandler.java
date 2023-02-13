@@ -18,11 +18,11 @@ public class HelloHandler extends FunctionInvoker<User, Greeting> {
         @HttpTrigger(name = "request", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<User>> request,
         ExecutionContext context) {
         User user = request.getBody()
-                           .filter((u -> u.getName() != null))
+                           .filter((u -> u.getUser_name() != null))
                            .orElseGet(() -> new User(
                                request.getQueryParameters()
                                       .getOrDefault("name", "world")));
-        context.getLogger().info("Greeting user name: " + user.getName());
+        context.getLogger().info("Greeting user name: " + user.getUser_name());
         return request
             .createResponseBuilder(HttpStatus.OK)
             .body(handleRequest(user, context))

@@ -3,50 +3,72 @@ package com.recycleapp.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
 import jakarta.persistence.OneToOne;
 
 @Entity
 public class Item {
-
+    
+    
     @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long item_id;
+
     @OneToOne
     @JsonIgnoreProperties("")
-    @JoinColumn(name = "reservation_id")
+    @JoinColumns({
+        @JoinColumn(name = "item"),
+        @JoinColumn(name = "user")
+    })
     private Reservation reservation;
 
-    private String name;
+    private String item_name;
 
     public Item() {
     }
 
-    public Item(String name) {
-        this.name = name;
+    public Item(String item_name) {
+        this.item_name = item_name;
     }
 
-    public String getItem() {
-        return name;
+
+    public Long getItem_id() {
+        return this.item_id;
     }
 
-    public void setItem(String name) {
-        this.name = name;
+    public void setItem_id(Long item_id) {
+        this.item_id = item_id;
     }
 
-    private String getName() {
-        return null;
+    public Reservation getReservation() {
+        return this.reservation;
     }
 
-    private String getReservation() {
-        return null;
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
     }
+
+    public String getItem_name() {
+        return this.item_name;
+    }
+
+    public void setItem_name(String item_name) {
+        this.item_name = item_name;
+    }
+    
+
 
     @Override
     public String toString() {
         return "{" +
-                " reservation='" + getReservation() + "'" +
-                ", name='" + getName() + "'" +
-                "}";
+            " item_id='" + getItem_id() + "'" +
+            ", reservation='" + getReservation() + "'" +
+            ", item_name='" + getItem_name() + "'" +
+            "}";
     }
 
 }

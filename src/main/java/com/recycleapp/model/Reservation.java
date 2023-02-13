@@ -12,13 +12,13 @@ public class Reservation {
     
 	@Id
 	@OneToOne(optional=false)
-	@JsonIgnoreProperties("")
+	@JsonIgnoreProperties("reservation")
 	@JoinColumn(name = "item_id")
 	private Item item;
 	
 	@Id
 	@OneToOne(optional=false)
-	@JsonIgnoreProperties("")
+	@JsonIgnoreProperties("reservations")
 	@JoinColumn(name = "user_id")
 	private User user;
 

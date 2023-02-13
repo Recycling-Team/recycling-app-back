@@ -3,9 +3,11 @@ package com.recycleapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.boot.CommandLineRunner;
 
+import com.recycleapp.model.Item;
 import com.recycleapp.model.ItemRepository;
-import com.recycleapp.model.ReservationRepository;
+import com.recycleapp.model.User;
 import com.recycleapp.model.UserRepository;
 
 import java.sql.*;
@@ -21,12 +23,25 @@ public class RecycleApp {
 
 
     @Bean
-    public CommandLineRunner recycleDemo(ItemRepository itemRepo, UserRepository userRepo,
-			ReservationRepository reservationRepo) {
-		return (args) -> {
-            log.info("Saving Recycle demo data");
-            
+    public CommandLineRunner recycleDemo(ItemRepository itemRepo, UserRepository userRepo) {
+        return (args) -> {
+            //log.info("Saving Recycle demo data");
+
             User user1 = new User("Tavis");
             User user2 = new User("Pro");
 
+            userRepo.save(user1);
+            userRepo.save(user2);
+
+            Item item1 = new Item("sohva");
+            Item item2 = new Item("Kenkä");
+            Item item3 = new Item("Säkkituoli");
+            Item item4 = new Item("Silitysrauta");
+
+            itemRepo.save(item1);
+            itemRepo.save(item2);
+            itemRepo.save(item3);
+            itemRepo.save(item4);
+        };
+    }
 }

@@ -6,10 +6,10 @@ import java.util.List;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.JoinColumn;
 
 @Entity
 public class User {
@@ -18,19 +18,17 @@ public class User {
     private Long user_id;
     
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     @JsonIgnoreProperties("")
-    @JoinColumn(name = "user_id")
-    private List<Reservation> reservation;
+    private List<Reservation> reservations;
 
     private String user_name;
 
     public User() {
-        
+
     }
 
-    public User(Long user_id, List<Reservation> reservation, String user_name) {
-        this.reservation = reservation;
+    public User(String user_name) {
         this.user_name = user_name;
     }
 
@@ -43,11 +41,11 @@ public class User {
     }
 
     public List<Reservation> getReservation() {
-        return this.reservation;
+        return this.reservations;
     }
 
-    public void setReservation(List<Reservation> reservation) {
-        this.reservation = reservation;
+    public void setReservation(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
     public String getUser_name() {
