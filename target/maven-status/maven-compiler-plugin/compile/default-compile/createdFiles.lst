@@ -1,5 +1,5 @@
-com\RecycleApp\Hello.class
-com\RecycleApp\HelloHandler.class
-com\RecycleApp\RecycleApp.class
-com\RecycleApp\model\User.class
-com\RecycleApp\model\Greeting.class
+com\recycleapp\model\Greeting.class
+com\recycleapp\Hello.class
+com\recycleapp\HelloHandler.class
+com\recycleapp\RecycleApp.class
+com\recycleapp\model\User.class

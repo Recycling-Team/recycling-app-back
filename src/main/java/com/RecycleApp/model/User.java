@@ -1,4 +1,4 @@
-package com.RecycleApp.model;
+package com.recycleapp.model;
 
 public class User {
 
