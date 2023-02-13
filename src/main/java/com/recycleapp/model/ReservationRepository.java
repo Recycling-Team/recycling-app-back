@@ -2,7 +2,7 @@ package com.recycleapp.model;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<Usera, Long> {
+public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 
     
 }

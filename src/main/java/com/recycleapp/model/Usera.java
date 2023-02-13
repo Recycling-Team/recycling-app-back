@@ -12,23 +12,24 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class User {
+public class Usera {
+
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long user_id;
     
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    @JsonIgnoreProperties("")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "reservation_id")
+    @JsonIgnoreProperties("user")
     private List<Reservation> reservations;
 
     private String user_name;
 
-    public User() {
+    public Usera() {
 
     }
 
-    public User(String user_name) {
+    public Usera(String user_name) {
         this.user_name = user_name;
     }
 

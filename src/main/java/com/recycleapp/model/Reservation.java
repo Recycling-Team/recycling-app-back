@@ -4,27 +4,29 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Reservation {
     
-	@Id
+    @Id
+    private Long reservation_id;
+
 	@OneToOne(optional=false)
 	@JsonIgnoreProperties("reservation")
 	@JoinColumn(name = "item_id")
 	private Item item;
 	
-	@Id
-	@OneToOne(optional=false)
+	@ManyToOne(optional=false)
 	@JsonIgnoreProperties("reservations")
 	@JoinColumn(name = "user_id")
-	private User user;
+	private Usera user;
 
 	private String date;
 
-	public Reservation(Item item, User user, String date) {
+	public Reservation(Item item, Usera user, String date) {
 		super();
 		this.item = item;
 		this.user = user;
@@ -39,11 +41,11 @@ public class Reservation {
 		this.item = item;
 	}
 
-	public User getUser() {
+	public Usera getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(Usera user) {
 		this.user = user;
 	}
 

@@ -7,7 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 
 import com.recycleapp.model.Item;
 import com.recycleapp.model.ItemRepository;
-import com.recycleapp.model.User;
+import com.recycleapp.model.Usera;
 import com.recycleapp.model.UserRepository;
 
 import java.sql.*;
@@ -27,8 +27,8 @@ public class RecycleApp {
         return (args) -> {
             //log.info("Saving Recycle demo data");
 
-            User user1 = new User("Tavis");
-            User user2 = new User("Pro");
+            Usera user1 = new Usera("Tavis");
+            Usera user2 = new Usera("Pro");
 
             userRepo.save(user1);
             userRepo.save(user2);

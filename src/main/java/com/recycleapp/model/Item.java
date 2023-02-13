@@ -7,7 +7,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinColumns;
 import jakarta.persistence.OneToOne;
 
 @Entity
@@ -19,11 +18,8 @@ public class Item {
     private Long item_id;
 
     @OneToOne
-    @JsonIgnoreProperties("")
-    @JoinColumns({
-        @JoinColumn(name = "item"),
-        @JoinColumn(name = "user")
-    })
+    @JsonIgnoreProperties("item")
+	@JoinColumn(name = "item_id")
     private Reservation reservation;
 
     private String item_name;
