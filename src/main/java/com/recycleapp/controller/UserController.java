@@ -1,25 +1,22 @@
 package com.recycleapp.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.recycleapp.model.UserRepository;
+import com.recycleapp.model.Reservation;
+import com.recycleapp.model.ReservationRepository;
 
 @Controller
 public class UserController {
-    @Autowired
-	private UserRepository userRepository;
 
-	
+    @Autowired
+	private ReservationRepository reservationRepository;
+    @GetMapping(value = "/{userid}/reservations")
+	public @ResponseBody List<Reservation> getAllReservations() {
+		return (List<Reservation>) reservationRepository.findAll();
+	}
 }
