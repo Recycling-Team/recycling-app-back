@@ -16,4 +16,3 @@ public class Hello implements Function<Mono<User>, Mono<Greeting>> {
         return mono.map(user -> new Greeting("Hello, " + user.getName() + "!\n"));
     }
 }
-//testi
