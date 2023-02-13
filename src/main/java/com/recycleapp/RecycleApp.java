@@ -21,11 +21,10 @@ public class RecycleApp {
         SpringApplication.run(RecycleApp.class, args);
     }
 
-
     @Bean
     public CommandLineRunner recycleDemo(ItemRepository itemRepo, UserRepository userRepo) {
         return (args) -> {
-            //log.info("Saving Recycle demo data");
+            // log.info("Saving Recycle demo data");
 
             Usera user1 = new Usera("Tavis");
             Usera user2 = new Usera("Pro");
