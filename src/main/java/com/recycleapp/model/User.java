@@ -1,74 +1,71 @@
 package com.recycleapp.model;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.util.List;
+
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.JoinColumn;
 
 @Entity
-
-
-
 public class User {
     @Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long user_id;
+    
+
     @OneToMany
     @JsonIgnoreProperties("")
-    @JoinColumn(name = "reservation_id")
-    private Reservation reservation;
+    @JoinColumn(name = "user_id")
+    private List<Reservation> reservation;
 
-    private String name;
-
-    public User(Reservation reservation) {
-        super();
-		this.reservation = reservation;
-    }
-
-    public User(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String user_name;
 
     public User() {
+        
     }
 
-    public User(Reservation reservation, String name) {
+    public User(Long user_id, List<Reservation> reservation, String user_name) {
         this.reservation = reservation;
-        this.name = name;
+        this.user_name = user_name;
     }
 
-    public Reservation getReservation() {
+    public Long getUser_id() {
+        return this.user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
+    }
+
+    public List<Reservation> getReservation() {
         return this.reservation;
     }
 
-    public void setReservation(Reservation reservation) {
+    public void setReservation(List<Reservation> reservation) {
         this.reservation = reservation;
     }
 
-    public User reservation(Reservation reservation) {
-        setReservation(reservation);
-        return this;
+    public String getUser_name() {
+        return this.user_name;
     }
 
-    public User name(String name) {
-        setName(name);
-        return this;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
     }
+
 
     @Override
     public String toString() {
         return "{" +
-            " reservation='" + getReservation() + "'" +
-            ", name='" + getName() + "'" +
+            " user_id='" + getUser_id() + "'" +
+            ", reservation='" + getReservation() + "'" +
+            ", user_name='" + getUser_name() + "'" +
             "}";
     }
-
   
 }
