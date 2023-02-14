@@ -31,4 +31,13 @@ public class ItemController {
     public @ResponseBody List<Item> itemListRest() {
         return (List<Item>) Irepository.findAll();
     }
+
+    // tallentaa
+    @RequestMapping(value = "/saveitem", method = RequestMethod.POST)
+    public String save(Item item) {
+        System.out.println("TEST" + item);
+        Irepository.save(item);
+        return "redirect:itemlist";
+    }
+
 }
