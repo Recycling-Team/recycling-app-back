@@ -19,7 +19,7 @@ public class Item {
 
     @OneToOne
     @JsonIgnoreProperties("item")
-	@JoinColumn(name = "item_id")
+	@JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
     private String item_name;
