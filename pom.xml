@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
         <azure.functions.maven.plugin.version>1.22.0</azure.functions.maven.plugin.version>
-        <azure.functions.java.library.version>2.2.0</azure.functions.java.library.version>
+        <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
         <functionAppName>azurefunctiontest-1677484012746</functionAppName>
     </properties>
 
@@ -23,6 +23,12 @@
             <artifactId>azure-functions-java-library</artifactId>
             <version>${azure.functions.java.library.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.microsoft.azure.functions</groupId>
+            <artifactId>azure-functions-java-library-sql</artifactId>
+            <version>0.1.1</version>
+        </dependency>
+
         <!-- Test -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
