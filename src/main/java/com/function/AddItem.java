@@ -28,7 +28,11 @@ public class AddItem {
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {
                     HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "add-item") HttpRequestMessage<String> request,
-            @SQLInput(name = "database", connectionStringSetting = "SqlConnectionString") Connection connection)
+                    @SQLInput(
+                        name = "toDoItems",
+                        commandText = "SELECT * FROM dbo.Item",
+                        commandType = "Text",
+                        connectionStringSetting = "SqlConnectionString") Connection connection)
             throws SQLException {
 
         // Parse the item data from the request body
