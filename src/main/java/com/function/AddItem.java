@@ -1,5 +1,9 @@
 package com.function;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import com.microsoft.azure.functions.HttpMethod;
 import com.microsoft.azure.functions.HttpRequestMessage;
 import com.microsoft.azure.functions.HttpResponseMessage;
@@ -8,7 +12,7 @@ import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
 import com.microsoft.azure.functions.sql.annotation.SQLInput;
-import com.microsoft.azure.functions.sql.annotation.SQLConnection;
+
 
 /**
  * Azure Function with HTTP trigger to add an item to an Azure SQL database.
@@ -25,7 +29,7 @@ public class AddItem {
                 authLevel = AuthorizationLevel.ANONYMOUS,
                 route = "add-item")
                 HttpRequestMessage<String> request,
-            @SQLConnection(
+            @SQLInput(
                 name = "database",
                 connectionStringSetting = "SqlConnectionString")
                 Connection connection) throws SQLException {
