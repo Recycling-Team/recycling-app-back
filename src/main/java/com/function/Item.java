@@ -1,36 +1,61 @@
 package com.function;
 
 import java.util.List;
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
 public class Item {
   
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "item_id")
-    private int itemId;
+    @JsonProperty("item_id")
+    private int item_id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JsonProperty("item_name")
+    private String item_name;
+
+    
+    private String description;
+
+    private String pickTime;
+    @JsonProperty("User")
+    private int user;
+
+    private String username;
+
+    private int category;
+
+    private int condition;
 
     public Item() {
     }
 
-    public Item(String itemName, User user) {
-        this.user = user;
+    public Item(int ItemId, String ItemName, int User) {
+        ItemId = item_id;
+        ItemName = item_name;
+        User = user;
     }
 
-    public int getItemId() {
-        return itemId;
+    public int getItemName() {
+        return item_id;
     }
 
-    public User getUser() {
+    public String getItemId() {
+        return item_name;
+    }
+
+    public int getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setItemId(int itemId) {
+        this.item_id = itemId;
+    }
+
+    public void setItemName(String itemName) {
+        this.item_name = itemName;
+    }
+
+    public void setUser(int user) {
         this.user = user;
     }
+    
+
 }

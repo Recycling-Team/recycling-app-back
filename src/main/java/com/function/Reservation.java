@@ -3,22 +3,22 @@ package com.function;
 
 public class Reservation {
 
-    private int userId;
-    private int itemId;
+    private int user_id;
+    private int item_id;
     private String date;
 
     public Reservation(int userId, int itemId, String date) {
-        this.userId = userId;
-        this.itemId = itemId;
+        this.user_id = userId;
+        this.item_id = itemId;
         this.date = date;
     }
 
     public int getUserId() {
-        return userId;
+        return user_id;
     }
 
     public int getItemId() {
-        return itemId;
+        return item_id;
     }
 
     public String getDate() {
@@ -26,11 +26,11 @@ public class Reservation {
     }
 
     public void setUserId(int userId) {
-        this.userId = userId;
+        this.user_id = userId;
     }
 
     public void setItemId(int itemId) {
-        this.itemId = itemId;
+        this.item_id = itemId;
     }
 
     public void setDate(String date) {

@@ -2,16 +2,16 @@ package com.function;
 
 public class Category {
 
-    private int categoryId;
+    private int category_id;
     private String category;
 
     public Category(int categoryId, String category) {
-        this.categoryId = categoryId;
+        this.category_id = categoryId;
         this.category = category;
     }
 
     public int getCategoryId() {
-        return categoryId;
+        return category_id;
     }
 
     public String getCategory() {
@@ -19,7 +19,7 @@ public class Category {
     }
 
     public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+        this.category_id = categoryId;
     }
 
     public void setCategory(String category) {

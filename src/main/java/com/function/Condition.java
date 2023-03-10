@@ -2,16 +2,16 @@ package com.function;
 
 public class Condition {
 
-    private int conditionId;
+    private int condition_id;
     private String condition;
 
     public Condition(int conditionId, String condition) {
-        this.conditionId = conditionId;
+        this.condition_id = conditionId;
         this.condition = condition;
     }
 
     public int getConditionId() {
-        return conditionId;
+        return condition_id;
     }
 
     public String getCondition() {
@@ -19,7 +19,7 @@ public class Condition {
     }
 
     public void setConditionId(int conditionId) {
-        this.conditionId = conditionId;
+        this.condition_id = conditionId;
     }
 
     public void setCondition(String condition) {

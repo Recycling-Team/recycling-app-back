@@ -9,17 +9,11 @@ import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
 import com.microsoft.azure.functions.sql.annotation.SQLInput;
 
+
 import java.util.Optional;
-/**
- * Azure Functions with HTTP Trigger.
- */
-public class HttpTriggerDatabase {
-    /**
-     * This function listens at endpoint "/api/HttpTriggerDatabase". Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/HttpTriggerDatabase
-     * 2. curl {your host}/api/HttpTriggerDatabase?name=HTTP%20Query
-     */
-    @FunctionName("HttpTriggerDatabase")
+
+public class GetCategories {
+    @FunctionName("GetCategories")
     public HttpResponseMessage run(
             @HttpTrigger(
                 name = "req",
@@ -27,11 +21,11 @@ public class HttpTriggerDatabase {
                 authLevel = AuthorizationLevel.ANONYMOUS)
                 HttpRequestMessage<Optional<String>> request,
             @SQLInput(
-                name = "toDoItems",
-                commandText = "SELECT * FROM dbo.Item",
+                name = "categories",
+                commandText = "SELECT * FROM dbo.categories",
                 commandType = "Text",
                 connectionStringSetting = "SqlConnectionString")
-                Item[] toDoItems) {
-        return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "application/json").body(toDoItems).build();
+                Category[] categories) {
+        return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "application/json").body(categories).build();
     }
 }
