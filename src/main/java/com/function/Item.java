@@ -10,11 +10,11 @@ public class Item {
 
     @JsonProperty("item_name")
     private String item_name;
-
     
     private String description;
 
     private String pickTime;
+    
     @JsonProperty("User")
     private int user;
 

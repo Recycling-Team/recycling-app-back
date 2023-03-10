@@ -10,16 +10,10 @@ import com.microsoft.azure.functions.annotation.HttpTrigger;
 import com.microsoft.azure.functions.sql.annotation.SQLInput;
 
 import java.util.Optional;
-/**
- * Azure Functions with HTTP Trigger.
- */
-public class GetItems {
-    /**
-     * This function listens at endpoint "/api/HttpTriggerDatabase". Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/HttpTriggerDatabase
-     * 2. curl {your host}/api/HttpTriggerDatabase?name=HTTP%20Query
-     */
-    @FunctionName("GetItems")
+
+
+public class OldReservations {
+    @FunctionName("OldReservations")
     public HttpResponseMessage run(
             @HttpTrigger(
                 name = "req",
@@ -27,11 +21,11 @@ public class GetItems {
                 authLevel = AuthorizationLevel.ANONYMOUS)
                 HttpRequestMessage<Optional<String>> request,
             @SQLInput(
-                name = "items",
-                commandText = "SELECT * FROM dbo.items INNER JOIN (SELECT * FROM dbo.users) hlo ON dbo.items.[user] = hlo.user_id",
+                name = "Reservations",
+                commandText = "SELECT * FROM dbo.Reservation",
                 commandType = "Text",
                 connectionStringSetting = "SqlConnectionString")
-                Item[] items) {
-        return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "application/json").body(items).build();
+                Reservation[] reservations) {
+        return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "application/json").body(reservations).build();
     }
 }
