@@ -1,7 +1,10 @@
 package com.function;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Category {
 
+    @JsonProperty("category_id")
     private int category_id;
     private String category;
 

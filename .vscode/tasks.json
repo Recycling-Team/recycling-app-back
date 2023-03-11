@@ -8,7 +8,7 @@
 			"problemMatcher": "$func-java-watch",
 			"isBackground": true,
 			"options": {
-				"cwd": "${workspaceFolder}/target/azure-functions/azurefunctiontest-1677484012746"
+				"cwd": "${workspaceFolder}/target/azure-functions/recycle-app-back-92873459875"
 			},
 			"dependsOn": "package (functions)"
 		},

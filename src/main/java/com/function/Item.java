@@ -1,6 +1,5 @@
 package com.function;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Item {
@@ -18,8 +17,6 @@ public class Item {
     @JsonProperty("User")
     private int user;
 
-    private String username;
-
     private int category;
 
     private int condition;
@@ -27,35 +24,72 @@ public class Item {
     public Item() {
     }
 
-    public Item(int ItemId, String ItemName, int User) {
-        ItemId = item_id;
-        ItemName = item_name;
-        User = user;
+    public Item(int ItemId, String ItemName, String Description, String PickTime, int User, int Category, int Condition) {
+        item_id = ItemId;
+        item_name = ItemName;
+        user = User;
+        description = Description;
+        pickTime = PickTime;
+        category = Category;
+        condition = Condition;
     }
 
-    public int getItemName() {
-        return item_id;
+    public int getItem_id() {
+        return this.item_id;
     }
 
-    public String getItemId() {
-        return item_name;
+    public void setItem_id(int item_id) {
+        this.item_id = item_id;
+    }
+
+    public String getItem_name() {
+        return this.item_name;
+    }
+
+    public void setItem_name(String item_name) {
+        this.item_name = item_name;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getPickTime() {
+        return this.pickTime;
+    }
+
+    public void setPickTime(String pickTime) {
+        this.pickTime = pickTime;
     }
 
     public int getUser() {
-        return user;
-    }
-
-    public void setItemId(int itemId) {
-        this.item_id = itemId;
-    }
-
-    public void setItemName(String itemName) {
-        this.item_name = itemName;
+        return this.user;
     }
 
     public void setUser(int user) {
         this.user = user;
     }
+
+    public int getCategory() {
+        return this.category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
+    public int getCondition() {
+        return this.condition;
+    }
+
+    public void setCondition(int condition) {
+        this.condition = condition;
+    }
+    
     
 
 }

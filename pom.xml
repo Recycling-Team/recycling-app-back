@@ -16,7 +16,7 @@
         <java.version>11</java.version>
         <azure.functions.maven.plugin.version>1.22.0</azure.functions.maven.plugin.version>
         <azure.functions.java.library.version>3.0.0</azure.functions.java.library.version>
-        <functionAppName>azurefunctiontest-1677484012746</functionAppName>
+        <functionAppName>recycle-app-back-92873459875</functionAppName>
     </properties>
 
     <dependencies>

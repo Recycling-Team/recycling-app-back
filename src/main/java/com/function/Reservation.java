@@ -1,15 +1,23 @@
 package com.function;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Reservation {
 
+    @JsonProperty("user_id")
     private int user_id;
+    @JsonProperty("item_id")
     private int item_id;
     private String date;
 
+    public Reservation() {
+        
+    }
+
     public Reservation(int userId, int itemId, String date) {
-        this.user_id = userId;
-        this.item_id = itemId;
+        user_id = userId;
+        item_id = itemId;
         this.date = date;
     }
 
@@ -25,12 +33,12 @@ public class Reservation {
         return date;
     }
 
-    public void setUserId(int userId) {
-        this.user_id = userId;
+    public void setUserId(int user_id) {
+        this.user_id = user_id;
     }
 
-    public void setItemId(int itemId) {
-        this.item_id = itemId;
+    public void setItemId(int item_id) {
+        this.item_id = item_id;
     }
 
     public void setDate(String date) {

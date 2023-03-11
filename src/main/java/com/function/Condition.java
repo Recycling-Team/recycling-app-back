@@ -1,7 +1,11 @@
 package com.function;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Condition {
 
+    
+    @JsonProperty("category_id")
     private int condition_id;
     private String condition;
 
