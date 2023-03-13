@@ -3,28 +3,29 @@ package com.function;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Item {
-  
+
     @JsonProperty("item_id")
     private int item_id;
 
     @JsonProperty("item_name")
     private String item_name;
-    
+    @JsonProperty("description")
     private String description;
-
+    @JsonProperty("pickTime")
     private String pickTime;
-    
-    @JsonProperty("User")
+
+    @JsonProperty("user")
     private int user;
-
+    @JsonProperty("category")
     private int category;
-
+    @JsonProperty("condition")
     private int condition;
 
     public Item() {
     }
 
-    public Item(int ItemId, String ItemName, String Description, String PickTime, int User, int Category, int Condition) {
+    public Item(int ItemId, String ItemName, String Description, String PickTime, int User, int Category,
+            int Condition) {
         item_id = ItemId;
         item_name = ItemName;
         user = User;
@@ -89,7 +90,5 @@ public class Item {
     public void setCondition(int condition) {
         this.condition = condition;
     }
-    
-    
 
 }
