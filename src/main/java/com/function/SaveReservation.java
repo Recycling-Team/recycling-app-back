@@ -27,7 +27,7 @@ public class SaveReservation {
                 HttpRequestMessage<Optional<String>> request,
             @SQLOutput(
                 name = "reservation",
-                commandText = "Reservation",
+                commandText = "reservations",
                 connectionStringSetting = "SqlConnectionString")
                 OutputBinding<Reservation> reservation) throws JsonParseException, JsonMappingException, IOException {
 
