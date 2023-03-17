@@ -1,5 +1,6 @@
 package com.function;
 
+import com.common.Item;
 import com.microsoft.azure.functions.HttpMethod;
 import com.microsoft.azure.functions.HttpRequestMessage;
 import com.microsoft.azure.functions.HttpResponseMessage;
@@ -19,7 +20,7 @@ public class GetItems {
      * 1. curl -d "HTTP Body" {your host}/api/HttpTriggerDatabase
      * 2. curl {your host}/api/HttpTriggerDatabase?name=HTTP%20Query
      */
-    @FunctionName("GetItems")
+    @FunctionName("items")
     public HttpResponseMessage run(
             @HttpTrigger(
                 name = "req",

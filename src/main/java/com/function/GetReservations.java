@@ -14,7 +14,7 @@ import com.microsoft.azure.functions.sql.annotation.SQLInput;
 import java.util.Optional;
 
 public class GetReservations {
-    @FunctionName("GetReservations")
+    @FunctionName("reservations")
     public HttpResponseMessage run(
             @HttpTrigger(
                 name = "req",

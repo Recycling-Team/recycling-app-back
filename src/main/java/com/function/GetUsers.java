@@ -19,7 +19,7 @@ public class GetUsers {
      * 1. curl -d "HTTP Body" {your host}/api/GetAllUsers
      * 2. curl {your host}/api/GetAllUsers?name=HTTP%20Query
      */
-    @FunctionName("GetUsers")
+    @FunctionName("users")
     public HttpResponseMessage run(
             @HttpTrigger(
                 name = "req",

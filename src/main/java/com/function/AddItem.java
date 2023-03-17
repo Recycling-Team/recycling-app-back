@@ -27,7 +27,7 @@ public class AddItem {
      * This function listens at endpoint "/api/add-item" and adds an item to the
      * "Item" table in an Azure SQL database.
      */
-    @FunctionName("add-item")
+    @FunctionName("AddItem")
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {
                     HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "add-item") HttpRequestMessage<Optional<String>> request,

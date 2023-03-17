@@ -17,14 +17,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.Optional;
 
-public class SaveReservation {
-    @FunctionName("SaveReservation")
+public class AddReservation {
+    @FunctionName("AddReservation")
     public HttpResponseMessage run(
             @HttpTrigger(
                 name = "req",
                 methods = {HttpMethod.POST},
                 authLevel = AuthorizationLevel.ANONYMOUS,
-                route = "savereservation")
+                route = "addreservation")
                 HttpRequestMessage<Optional<String>> request,
             @SQLOutput(
                 name = "reservation",

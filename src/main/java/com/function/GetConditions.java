@@ -15,7 +15,7 @@ import java.util.Optional;
 
 public class GetConditions {
 
-    @FunctionName("GetConditions")
+    @FunctionName("conditions")
     public HttpResponseMessage run(
             @HttpTrigger(
                 name = "req",
