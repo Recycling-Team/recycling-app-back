@@ -1,5 +1,6 @@
 package com.function;
 
+import com.common.Category;
 import com.microsoft.azure.functions.HttpMethod;
 import com.microsoft.azure.functions.HttpRequestMessage;
 import com.microsoft.azure.functions.HttpResponseMessage;
