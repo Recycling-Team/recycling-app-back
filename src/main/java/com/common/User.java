@@ -8,15 +8,19 @@ public class User {
     private int user_id;
     private String username;
 
+    private String last_login;
 
     public User() {
     }
 
-    public User(int user_id, String username) {
+
+    public User(int user_id, String username, String last_login) {
         this.user_id = user_id;
         this.username = username;
+        this.last_login = last_login;
     }
-    
+
+
     public int getUser_id() {
         return this.user_id;
     }
@@ -33,5 +37,12 @@ public class User {
         this.username = username;
     }
 
+    public String getLast_login() {
+        return this.last_login;
+    }
 
+    public void setLast_login(String last_login) {
+        this.last_login = last_login;
+    }
+    
 }

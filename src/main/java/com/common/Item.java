@@ -9,31 +9,49 @@ public class Item {
 
     @JsonProperty("item_name")
     private String item_name;
+
     @JsonProperty("description")
     private String description;
-    @JsonProperty("pickTime")
-    private String pickTime;
+
+    @JsonProperty("pick_time")
+    private String pick_time;
+
+    @JsonProperty("pickup_status")
+    private String pickup_status;
+    
+    @JsonProperty("listing_date")
+    private String listing_date;
+    
+    @JsonProperty("available")
+    private String available;
 
     @JsonProperty("user")
     private int user;
+
     @JsonProperty("category")
     private int category;
+
     @JsonProperty("condition")
     private int condition;
 
     public Item() {
     }
 
-    public Item(int ItemId, String ItemName, String Description, String PickTime, int User, int Category,
-            int Condition) {
-        item_id = ItemId;
-        item_name = ItemName;
-        user = User;
-        description = Description;
-        pickTime = PickTime;
-        category = Category;
-        condition = Condition;
+
+    public Item(int item_id, String item_name, String description, String pick_time, String pickup_status,
+            String listing_date, String available, int user, int category, int condition) {
+        this.item_id = item_id;
+        this.item_name = item_name;
+        this.description = description;
+        this.pick_time = pick_time;
+        this.pickup_status = pickup_status;
+        this.listing_date = listing_date;
+        this.available = available;
+        this.user = user;
+        this.category = category;
+        this.condition = condition;
     }
+    
 
     public int getItem_id() {
         return this.item_id;
@@ -59,12 +77,36 @@ public class Item {
         this.description = description;
     }
 
-    public String getPickTime() {
-        return this.pickTime;
+    public String getPick_time() {
+        return this.pick_time;
     }
 
-    public void setPickTime(String pickTime) {
-        this.pickTime = pickTime;
+    public void setPick_time(String pick_time) {
+        this.pick_time = pick_time;
+    }
+
+    public String getPickup_status() {
+        return this.pickup_status;
+    }
+
+    public void setPickup_status(String pickup_status) {
+        this.pickup_status = pickup_status;
+    }
+
+    public String getListing_date() {
+        return this.listing_date;
+    }
+
+    public void setListing_date(String listing_date) {
+        this.listing_date = listing_date;
+    }
+
+    public String getAvailable() {
+        return this.available;
+    }
+
+    public void setAvailable(String available) {
+        this.available = available;
     }
 
     public int getUser() {
@@ -90,5 +132,6 @@ public class Item {
     public void setCondition(int condition) {
         this.condition = condition;
     }
+    
 
 }
