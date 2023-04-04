@@ -1,6 +1,7 @@
 package com.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.time.LocalDateTime;
 
 public class Item {
 
@@ -38,6 +39,9 @@ public class Item {
     @JsonProperty("condition")
     private int condition;
 
+    @JsonProperty("timestamp")
+    private LocalDateTime timestamp;
+
     public Item() {
     }
 
@@ -54,6 +58,7 @@ public class Item {
         this.user = user;
         this.category = category;
         this.condition = condition;
+        this.timestamp = LocalDateTime.now();
     }
 
 
