@@ -46,7 +46,7 @@ public class LoginCheck {
             User p = users[0];
             p.setLast_login(LocalDateTime.now().toString());
             user.setValue(p);
-            return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "application/json").body(user).build();
+            return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "application/json").body(users[0]).build();
         }
     }
             
