@@ -27,10 +27,6 @@ public class DeleteItem {
             @SQLOutput(name = "item", commandText = "items", connectionStringSetting = "SqlConnectionString") OutputBinding<Item> item)
             throws JsonParseException, JsonMappingException, IOException {
     
-        if (item == null) {
-            return request.createResponseBuilder(HttpStatus.NOT_FOUND).body("Item with id " + item_id + " not found.").build();
-        }
-    
         LocalDateTime currentDateTime = LocalDateTime.now();
         LocalDateTime itemDateTime = item.getTimestamp();
     
