@@ -39,8 +39,8 @@ public class LoginCheck {
                 connectionStringSetting = "SqlConnectionString")
             OutputBinding<User> user) throws JsonParseException, JsonMappingException, IOException {
         if (users.length == 0) {
-            String msg = String.format("{\"msg\": \"User not found\" }");
-            return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "application/json").body(msg).build();
+            //String msg = String.format("{\"msg\": \"User not found\" }");
+            return request.createResponseBuilder(HttpStatus.NOT_FOUND).header("Content-Type", "application/json").build();
         } else {
             
             User p = users[0];
