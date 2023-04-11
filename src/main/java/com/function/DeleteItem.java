@@ -37,7 +37,7 @@ public class DeleteItem {
         long hoursElapsed = ChronoUnit.HOURS.between(itemDateTime, currentDateTime);
     
         if (hoursElapsed >= 24) {
-            item.setAvailable("no");
+            item.available = no;
             return request.createResponseBuilder(HttpStatus.OK).body("Item with id " + item_name + " hidden successfully.").build();
         } else {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Item with id " + item_name + " cannot be hidden yet.").build();
