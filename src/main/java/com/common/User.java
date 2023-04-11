@@ -10,6 +10,7 @@ public class User {
 
     private String last_login;
 
+
     public User() {
     }
 
@@ -19,7 +20,6 @@ public class User {
         this.username = username;
         this.last_login = last_login;
     }
-
 
     public int getUser_id() {
         return this.user_id;
@@ -44,5 +44,14 @@ public class User {
     public void setLast_login(String last_login) {
         this.last_login = last_login;
     }
-    
+
+    @Override
+    public String toString() {
+        return "{" +
+            " user_id='" + getUser_id() + "'" +
+            ", username='" + getUsername() + "'" +
+            ", last_login='" + getLast_login() + "'" +
+            "}";
+    }
+
 }
