@@ -34,6 +34,7 @@ public class ReservationNotified {
                 String json = request.getBody().get();
                 ObjectMapper mapper = new ObjectMapper();
                 Reservation r = mapper.readValue(json, Reservation.class);
+                r.setNotification("False");
                 reservation.setValue(r);
                 // Return a response indicating success
                 return request.createResponseBuilder(HttpStatus.OK).build();
