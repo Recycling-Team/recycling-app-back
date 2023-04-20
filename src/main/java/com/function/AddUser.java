@@ -8,6 +8,7 @@ import com.microsoft.azure.functions.OutputBinding;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
+import com.microsoft.azure.functions.sql.annotation.SQLInput;
 import com.microsoft.azure.functions.sql.annotation.SQLOutput;
 import com.common.User;
 import com.fasterxml.jackson.core.JsonParseException;
@@ -26,16 +27,29 @@ public class AddUser {
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {
                     HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "add-user") HttpRequestMessage<Optional<String>> request,
-            @SQLOutput(name = "user", commandText = "users", connectionStringSetting = "SqlConnectionString") OutputBinding<User> user)
+            @SQLInput(
+                name = "users",
+                commandText = "SELECT * FROM dbo.users WHERE username = @username", 
+                commandType = "Text",
+                parameters = "@username={name}",
+                connectionStringSetting = "SqlConnectionString")    
+            User[] users,
+            @SQLOutput(
+                name = "user", 
+                commandText = "users", 
+                connectionStringSetting = "SqlConnectionString") 
+                OutputBinding<User> user)
             throws JsonParseException, JsonMappingException, IOException {
-
-        String json = request.getBody().get();
-        ObjectMapper mapper = new ObjectMapper();
-        User u = mapper.readValue(json, User.class);
-        user.setValue(u);
-
-        // Return a response indicating success
-        return request.createResponseBuilder(HttpStatus.OK).build();
+        if (users.length == 0) {
+            String json = request.getBody().get();
+            ObjectMapper mapper = new ObjectMapper();
+            User u = mapper.readValue(json, User.class);
+            user.setValue(u);
+            // Return a response indicating success
+            return request.createResponseBuilder(HttpStatus.OK).build();
+        } else {
+            return request.createResponseBuilder(HttpStatus.FORBIDDEN).build();
+        }
     }
 
 }
