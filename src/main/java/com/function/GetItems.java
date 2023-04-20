@@ -29,7 +29,7 @@ public class GetItems {
                 HttpRequestMessage<Optional<String>> request,
             @SQLInput(
                 name = "items",
-                commandText = "SELECT * FROM dbo.items INNER JOIN (SELECT * FROM dbo.users) hlo ON dbo.items.[user] = hlo.user_id WHERE dbo.items.available = 0",
+                commandText = "SELECT * FROM dbo.items INNER JOIN (SELECT * FROM dbo.users) hlo ON dbo.items.[user] = hlo.user_id WHERE dbo.items.available = 0 AND visible = true",
                 commandType = "Text",
                 connectionStringSetting = "SqlConnectionString")
                 Item[] items) {
