@@ -31,7 +31,7 @@ public class DeleteItem{
      * This function will be invoked periodically according to the specified schedule.
      * The below function is executed each time the minutes have a value divisible by five
      */
-    @FunctionName("TimerTrigger")
+    @FunctionName("DeleteItem")
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {
                     HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "add-item") HttpRequestMessage<Optional<String>> request,
