@@ -26,6 +26,7 @@ public class DeleteItem{
     
     @FunctionName("DeleteItem")
     public void run(
+            //Timer which executes this function ever day 0:00 midnight
             @TimerTrigger(name = "timer", schedule = "0 0 0 * * *") String timerInfo,
             @SQLInput(
                     name = "items",
@@ -42,7 +43,7 @@ public class DeleteItem{
             throws JsonParseException, JsonMappingException, IOException {
     
         LocalDateTime twoWeeksAgo = LocalDateTime.now().minus(2, ChronoUnit.WEEKS);
-    
+        //loop which checks if item is added two weeks ago and set it's visible value to false if it over two weeks olds
         for (Item i : items) {
             if (i.getCreatedAt().isBefore(twoWeeksAgo)) {
                 i.setVisible(false);
