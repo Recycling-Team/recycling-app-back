@@ -22,34 +22,32 @@ import com.microsoft.azure.functions.annotation.*;
 import com.microsoft.azure.functions.*;
 import java.time.*;
 
-public class DeleteItem{
-    
+public class DeleteItem {
+
     @FunctionName("DeleteItem")
     public void run(
-            //Timer which executes this function ever day 0:00 midnight
-            @TimerTrigger(name = "timer", schedule = "0 0 0 * * *") String timerInfo,
-            @SQLInput(
-                    name = "items",
-                    commandText = "SELECT * FROM dbo.items INNER JOIN (SELECT * FROM dbo.users) hlo ON dbo.items.[user] = hlo.user_id",
-                    commandType = "Text",
-                    connectionStringSetting = "SqlConnectionString")  
-            Item[] items,
-            @SQLOutput(
-                name = "item", 
-                commandText = "items", 
-                connectionStringSetting = "SqlConnectionString") 
-                OutputBinding<Item> item,
-            final ExecutionContext context)
-            throws JsonParseException, JsonMappingException, IOException {
-    
+        //Timer which executes this function ever day 0:00 midnight
+        @TimerTrigger(name = "timer", schedule = "0 0 0 * * *") String timerInfo,
+        @SQLInput(
+            name = "items",
+            commandText = "SELECT * FROM dbo.items INNER JOIN (SELECT * FROM dbo.users) hlo ON dbo.items.[user] = hlo.user_id",
+            commandType = "Text",
+            connectionStringSetting = "SqlConnectionString") Item[] items,
+        @SQLOutput(
+            name = "item",
+            commandText = "items",
+            connectionStringSetting = "SqlConnectionString") OutputBinding < Item > item,
+        final ExecutionContext context)
+    throws JsonParseException, JsonMappingException, IOException {
+
         LocalDateTime twoWeeksAgo = LocalDateTime.now().minus(2, ChronoUnit.WEEKS);
         //loop which checks if item is added two weeks ago and set it's visible value to false if it over two weeks olds
-        for (Item i : items) {
+        for (Item i: items) {
             if (i.getCreatedAt().isBefore(twoWeeksAgo)) {
                 i.setVisible(false);
             }
         }
-    
-        return request.createResponseBuilder(HttpStatus.OK).body("Items updated.").build();
+
+        context.getLogger().info("Java Timer trigger function to update items over two weeks old executed at: " + LocalDateTime.now());
     }
 }
