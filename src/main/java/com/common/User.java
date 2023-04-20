@@ -6,14 +6,13 @@ public class User {
 
     @JsonProperty("user_id")
     private int user_id;
+    @JsonProperty("username")
     private String username;
 
     private String last_login;
 
-
     public User() {
     }
-
 
     public User(int user_id, String username, String last_login) {
         this.user_id = user_id;
@@ -48,10 +47,10 @@ public class User {
     @Override
     public String toString() {
         return "{" +
-            " user_id='" + getUser_id() + "'" +
-            ", username='" + getUsername() + "'" +
-            ", last_login='" + getLast_login() + "'" +
-            "}";
+                " user_id='" + getUser_id() + "'" +
+                ", username='" + getUsername() + "'" +
+                ", last_login='" + getLast_login() + "'" +
+                "}";
     }
 
 }

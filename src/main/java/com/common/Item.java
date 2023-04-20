@@ -16,16 +16,15 @@ public class Item {
     @JsonProperty("pick_time")
     private String pick_time;
 
-
     @JsonProperty("message")
     private String message;
 
     @JsonProperty("pickup_status")
     private String pickup_status;
-    
+
     @JsonProperty("listing_date")
     private String listing_date;
-    
+
     @JsonProperty("available")
     private String available;
 
@@ -41,8 +40,8 @@ public class Item {
     public Item() {
     }
 
-
-    public Item(int item_id, String item_name, String description, String pick_time, String message, String pickup_status, String listing_date, String available, int user, int category, int condition) {
+    public Item(int item_id, String item_name, String description, String pick_time, String message,
+            String pickup_status, String listing_date, String available, int user, int category, int condition) {
         this.item_id = item_id;
         this.item_name = item_name;
         this.description = description;
@@ -55,7 +54,6 @@ public class Item {
         this.category = category;
         this.condition = condition;
     }
-
 
     public int getItem_id() {
         return this.item_id;
@@ -144,23 +142,22 @@ public class Item {
     public void setCondition(int condition) {
         this.condition = condition;
     }
-    
 
     @Override
     public String toString() {
         return "{" +
-            " item_id='" + getItem_id() + "'" +
-            ", item_name='" + getItem_name() + "'" +
-            ", description='" + getDescription() + "'" +
-            ", pick_time='" + getPick_time() + "'" +
-            ", message='" + getMessage() + "'" +
-            ", pickup_status='" + getPickup_status() + "'" +
-            ", listing_date='" + getListing_date() + "'" +
-            ", available='" + getAvailable() + "'" +
-            ", user='" + getUser() + "'" +
-            ", category='" + getCategory() + "'" +
-            ", condition='" + getCondition() + "'" +
-            "}";
+                " item_id='" + getItem_id() + "'" +
+                ", item_name='" + getItem_name() + "'" +
+                ", description='" + getDescription() + "'" +
+                ", pick_time='" + getPick_time() + "'" +
+                ", message='" + getMessage() + "'" +
+                ", pickup_status='" + getPickup_status() + "'" +
+                ", listing_date='" + getListing_date() + "'" +
+                ", available='" + getAvailable() + "'" +
+                ", user='" + getUser() + "'" +
+                ", category='" + getCategory() + "'" +
+                ", condition='" + getCondition() + "'" +
+                "}";
     }
 
 }
