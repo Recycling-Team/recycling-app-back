@@ -57,8 +57,6 @@ public class DeleteItem{
             }
         }
     
-        context.getLogger().info("Java Timer trigger function executed at: " + LocalDateTime.now());
-    
         return request.createResponseBuilder(HttpStatus.OK).body("Items updated.").build();
     }
 }
