@@ -18,30 +18,47 @@ import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
 import com.microsoft.azure.functions.sql.annotation.SQLInput;
 import com.microsoft.azure.functions.sql.annotation.SQLOutput;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+import java.time.*;
 
-public class DeleteItem {
-
-    @FunctionName("DeleteItem")
+/**
+ * Azure Functions with Timer trigger.
+ * https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer?tabs=java
+ */
+public class DeleteItem{
+    /**
+     * This function will be invoked periodically according to the specified schedule.
+     * The below function is executed each time the minutes have a value divisible by five
+     */
+    @FunctionName("TimerTrigger")
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {
-                    HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "delete-item") HttpRequestMessage<Optional<String>> request,
-                   
-            @SQLOutput(name = "item", commandText = "items", connectionStringSetting = "SqlConnectionString") OutputBinding<Item> item)
+                    HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "add-item") HttpRequestMessage<Optional<String>> request,
+            @SQLInput(
+                    name = "items",
+                    commandText = "SELECT * FROM dbo.items INNER JOIN (SELECT * FROM dbo.users) hlo ON dbo.items.[user] = hlo.user_id",
+                    commandType = "Text",
+                    connectionStringSetting = "SqlConnectionString")  
+            Item[] items,
+            @SQLOutput(
+                name = "item", 
+                commandText = "items", 
+                connectionStringSetting = "SqlConnectionString") 
+                OutputBinding<Item> item,
+            final ExecutionContext context)
             throws JsonParseException, JsonMappingException, IOException {
-                
     
-        LocalDateTime currentDateTime = LocalDateTime.now();
-        LocalDateTime itemDateTime = item.getTimestamp();
+        LocalDateTime twoWeeksAgo = LocalDateTime.now().minus(2, ChronoUnit.WEEKS);
     
-        long daysElapsed = ChronoUnit.DAYS.between(itemDateTime, currentDateTime);
-    
-        if (daysElapsed >= 14) {
-            item.available = no;
-            return request.createResponseBuilder(HttpStatus.OK).body("Item with id " + item_name + " hidden successfully.").build();
-        } else {
-            return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Item with id " + item_name + " cannot be hidden yet.").build();
+        for (Item i : items) {
+            if (i.getCreatedAt().isBefore(twoWeeksAgo)) {
+                i.setVisible(false);
+            }
         }
-        
+    
+        context.getLogger().info("Java Timer trigger function executed at: " + LocalDateTime.now());
+    
+        return request.createResponseBuilder(HttpStatus.OK).body("Items updated.").build();
     }
 }
-    
