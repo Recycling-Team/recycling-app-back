@@ -22,19 +22,11 @@ import com.microsoft.azure.functions.annotation.*;
 import com.microsoft.azure.functions.*;
 import java.time.*;
 
-/**
- * Azure Functions with Timer trigger.
- * https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-timer?tabs=java
- */
 public class DeleteItem{
-    /**
-     * This function will be invoked periodically according to the specified schedule.
-     * The below function is executed each time the minutes have a value divisible by five
-     */
+    
     @FunctionName("DeleteItem")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {
-                    HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "add-item") HttpRequestMessage<Optional<String>> request,
+    public void run(
+            @TimerTrigger(name = "timer", schedule = "0 0 0 * * *") String timerInfo,
             @SQLInput(
                     name = "items",
                     commandText = "SELECT * FROM dbo.items INNER JOIN (SELECT * FROM dbo.users) hlo ON dbo.items.[user] = hlo.user_id",
