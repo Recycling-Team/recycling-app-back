@@ -16,6 +16,7 @@ import com.microsoft.azure.functions.OutputBinding;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
 import com.microsoft.azure.functions.annotation.HttpTrigger;
+import com.microsoft.azure.functions.sql.annotation.SQLInput;
 import com.microsoft.azure.functions.sql.annotation.SQLOutput;
 
 public class DeleteItem {
@@ -24,8 +25,10 @@ public class DeleteItem {
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {
                     HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "delete-item") HttpRequestMessage<Optional<String>> request,
+                   
             @SQLOutput(name = "item", commandText = "items", connectionStringSetting = "SqlConnectionString") OutputBinding<Item> item)
             throws JsonParseException, JsonMappingException, IOException {
+                
     
         LocalDateTime currentDateTime = LocalDateTime.now();
         LocalDateTime itemDateTime = item.getTimestamp();
@@ -38,6 +41,7 @@ public class DeleteItem {
         } else {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST).body("Item with id " + item_name + " cannot be hidden yet.").build();
         }
+        
     }
 }
     
