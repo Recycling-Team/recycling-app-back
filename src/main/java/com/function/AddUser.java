@@ -31,7 +31,7 @@ public class AddUser {
                 name = "users",
                 commandText = "SELECT * FROM dbo.users WHERE username = @username", 
                 commandType = "Text",
-                parameters = "@username={name}",
+                parameters = "@username={username}",
                 connectionStringSetting = "SqlConnectionString")    
             User[] users,
             @SQLOutput(
