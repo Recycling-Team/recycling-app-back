@@ -2,6 +2,7 @@ package com.function;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
@@ -40,13 +41,13 @@ public class DeleteItem {
         final ExecutionContext context)
     throws JsonParseException, JsonMappingException, IOException {
 
-        LocalDateTime twoWeeksAgo = LocalDateTime.now().minus(2, ChronoUnit.WEEKS);
+        /*LocalDateTime twoWeeksAgo = LocalDateTime.now().minus(2, ChronoUnit.WEEKS);
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
         //loop which checks if item is added two weeks ago and set it's visible value to false if it's over two weeks olds
         for (Item i: items) {
-            if (i.getCreatedAt().isBefore(twoWeeksAgo)) {
-                i.setVisible(false);
+            if (i.getListing_date().isBefore(LocalDateTime.parse(twoWeeksAgo, formatter))) {
             }
-        }
+        }*/
 
         context.getLogger().info("Java Timer trigger function to update items over two weeks old executed at: " + LocalDateTime.now());
     }
