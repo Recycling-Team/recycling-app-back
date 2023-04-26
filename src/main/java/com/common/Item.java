@@ -24,7 +24,7 @@ public class Item {
     private String pickup_status;
 
     @JsonProperty("listing_date")
-    private String listing_date;
+    public String listing_date;
 
     @JsonProperty("available")
     private String available;

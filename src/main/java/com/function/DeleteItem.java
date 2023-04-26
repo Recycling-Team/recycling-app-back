@@ -25,7 +25,7 @@ import java.time.*;
 
 public class DeleteItem {
 
-    @FunctionName("DeleteItem")
+   
     public void run(
         //Timer which executes this function every day 0:00 midnight
         @TimerTrigger(name = "timer", schedule = "0 0 0 * * *") String timerInfo,
@@ -36,19 +36,11 @@ public class DeleteItem {
             connectionStringSetting = "SqlConnectionString") Item[] items,
         @SQLOutput(
             name = "item",
-            commandText = "items",
-            connectionStringSetting = "SqlConnectionString") OutputBinding < Item > item,
+            commandText = "UPDATE dbo.items SET available = 'false' WHERE listing_date < DATEADD(week, -2, GETDATE())",
+            connectionStringSetting = "SqlConnectionString") OutputBinding <Item> item,
         final ExecutionContext context)
     throws JsonParseException, JsonMappingException, IOException {
 
-        /*LocalDateTime twoWeeksAgo = LocalDateTime.now().minus(2, ChronoUnit.WEEKS);
-        DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE_TIME;
-        //loop which checks if item is added two weeks ago and set it's visible value to false if it's over two weeks olds
-        for (Item i: items) {
-            if (i.getListing_date().isBefore(LocalDateTime.parse(twoWeeksAgo, formatter))) {
-            }
-        }*/
+        }
 
-        context.getLogger().info("Java Timer trigger function to update items over two weeks old executed at: " + LocalDateTime.now());
     }
-}
