@@ -38,10 +38,19 @@ public class UpdateItem {
             connectionStringSetting = "SqlConnectionString") OutputBinding <Item> item)
             throws JsonParseException, JsonMappingException, IOException {
 
-        HttpResponseMessage response = request.createResponseBuilder(HttpStatus.OK)
-                .body("Item available set to false successfully")
-                .build();
+         // Get the itemId from the request query parameter
+    String itemId = request.getQueryParameters().get("itemId");
     
-        return response;
+    // Update the SQL query commandText with the itemId parameter
+    ((SQLOutputBinding<Item>) item).setCommandText("UPDATE dbo.items SET available = 'false' WHERE id = '" + itemId + "'");
+    
+    // Execute the SQL query
+    item.setValue(new Item());
+    
+    HttpResponseMessage response = request.createResponseBuilder(HttpStatus.OK)
+            .body("Item available set to false successfully")
+            .build();
+
+    return response;
     }
 }
