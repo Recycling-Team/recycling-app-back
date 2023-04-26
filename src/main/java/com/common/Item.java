@@ -151,7 +151,7 @@ public class Item {
         this.condition = condition;
     }
 
-    public boolean isVisible() {
+    public boolean getVisible() {
         return visible;
     }
 
@@ -173,6 +173,7 @@ public class Item {
                 ", user='" + getUser() + "'" +
                 ", category='" + getCategory() + "'" +
                 ", condition='" + getCondition() + "'" +
+                ", visible='" + getVisible() + "'" +
                 "}";
     }
 
