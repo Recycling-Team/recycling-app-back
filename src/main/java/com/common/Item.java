@@ -1,7 +1,6 @@
 package com.common;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.time.LocalDateTime;
 
 public class Item {
 
@@ -42,7 +41,7 @@ public class Item {
     }
 
     public Item(int item_id, String item_name, String description, String pick_time, String message,
-            String pickup_status, String listing_date, String available, int user, int category, int condition,) {
+            String pickup_status, String listing_date, String available, int user, int category, int condition) {
         this.item_id = item_id;
         this.item_name = item_name;
         this.description = description;
