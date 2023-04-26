@@ -37,9 +37,6 @@ public class Item {
 
     @JsonProperty("condition")
     private int condition;
-
-    @JsonProperty("createdAt")
-    private LocalDateTime createdAt;
     
     @JsonProperty("visible")
     private boolean visible;

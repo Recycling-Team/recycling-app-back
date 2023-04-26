@@ -36,24 +36,11 @@ public class DeleteItem {
             connectionStringSetting = "SqlConnectionString") Item[] items,
         @SQLOutput(
             name = "item",
-            commandText = "items",
+            commandText = "UPDATE dbo.items SET visible = 'false' WHERE listing_date < DATEADD(week, -2, GETDATE())",
             connectionStringSetting = "SqlConnectionString") OutputBinding <Item> item,
         final ExecutionContext context)
     throws JsonParseException, JsonMappingException, IOException {
 
-        Item item2 = new Item();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDateTime listingDate = LocalDateTime.parse(item2.getListing_date(), formatter);
-        LocalDateTime twoWeeksAgo = LocalDateTime.now().minus(2, ChronoUnit.WEEKS);
-        Duration duration = Duration.between(listingDate, twoWeeksAgo);
-        long daysAgo = duration.toDays();
-        //loop which checks if item is added two weeks ago and set it's visible value to false if it's over two weeks olds
-        for (Item i: items) {
-            if (daysAgo > 14) {
-                i.setVisible(false);
-            }
         }
 
-        context.getLogger().info("Java Timer trigger function to update items over two weeks old executed at: " + LocalDateTime.now());
     }
-}
