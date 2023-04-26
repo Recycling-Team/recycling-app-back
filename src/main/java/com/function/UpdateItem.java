@@ -3,6 +3,7 @@ package com.function;
 import com.common.Item;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.azure.functions.HttpMethod;
 import com.microsoft.azure.functions.HttpRequestMessage;
 import com.microsoft.azure.functions.HttpResponseMessage;
@@ -25,22 +26,17 @@ public class UpdateItem {
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {
             HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "update-item") HttpRequestMessage<Optional<String>> request,
-            @SQLInput(
-                name = "updateItem",
-                commandType = "Text",
-                commandText = "SELECT * FROM dbo.items WHERE id = @item_id",
-                connectionStringSetting = "SqlConnectionString" 
-            )
             @SQLOutput(
             name = "item",
-            commandText = "UPDATE dbo.items WHERE id = @item_id SET available = 'false'",
+            commandText = "dbo.items",
             connectionStringSetting = "SqlConnectionString") OutputBinding <Item> item)
             throws JsonParseException, JsonMappingException, IOException {
-
-        HttpResponseMessage response = request.createResponseBuilder(HttpStatus.OK)
-                .body("Item available set to false successfully")
-                .build();
+                String json = request.getBody().get();
+                ObjectMapper mapper = new ObjectMapper();
+                Item i = mapper.readValue(json, Item.class);
+                i.setAvailable("False");
+                item.setValue(i);
     
-        return response;
+                return request.createResponseBuilder(HttpStatus.OK).build();
     }
 }
