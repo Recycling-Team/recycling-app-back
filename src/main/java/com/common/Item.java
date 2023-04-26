@@ -24,7 +24,7 @@ public class Item {
     private String pickup_status;
 
     @JsonProperty("listing_date")
-    private String listing_date;
+    public String listing_date;
 
     @JsonProperty("available")
     private String available;
@@ -48,7 +48,7 @@ public class Item {
     }
 
     public Item(int item_id, String item_name, String description, String pick_time, String message,
-            String pickup_status, String listing_date, String available, int user, int category, int condition, LocalDateTime createdAt, boolean visible) {
+            String pickup_status, String listing_date, String available, int user, int category, int condition, boolean visible) {
         this.item_id = item_id;
         this.item_name = item_name;
         this.description = description;
@@ -60,7 +60,7 @@ public class Item {
         this.user = user;
         this.category = category;
         this.condition = condition;
-        this.createdAt = createdAt;
+
         this.visible = visible;
     }
 
@@ -150,14 +150,6 @@ public class Item {
 
     public void setCondition(int condition) {
         this.condition = condition;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 
     public boolean isVisible() {

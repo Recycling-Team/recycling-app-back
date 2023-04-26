@@ -2,6 +2,7 @@ package com.function;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ import java.time.*;
 
 public class DeleteItem {
 
-    @FunctionName("DeleteItem")
+   
     public void run(
         //Timer which executes this function every day 0:00 midnight
         @TimerTrigger(name = "timer", schedule = "0 0 0 * * *") String timerInfo,
@@ -40,10 +41,15 @@ public class DeleteItem {
         final ExecutionContext context)
     throws JsonParseException, JsonMappingException, IOException {
 
+        Item item2 = new Item();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime listingDate = LocalDateTime.parse(item2.getListing_date(), formatter);
         LocalDateTime twoWeeksAgo = LocalDateTime.now().minus(2, ChronoUnit.WEEKS);
+        Duration duration = Duration.between(listingDate, twoWeeksAgo);
+        long daysAgo = duration.toDays();
         //loop which checks if item is added two weeks ago and set it's visible value to false if it's over two weeks olds
         for (Item i: items) {
-            if (i.getCreatedAt().isBefore(twoWeeksAgo)) {
+            if (daysAgo > 14) {
                 i.setVisible(false);
             }
         }
