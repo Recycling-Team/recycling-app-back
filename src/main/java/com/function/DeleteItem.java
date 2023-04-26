@@ -29,11 +29,6 @@ public class DeleteItem {
     public void run(
         //Timer which executes this function every day 0:00 midnight
         @TimerTrigger(name = "timer", schedule = "0 0 0 * * *") String timerInfo,
-        @SQLInput(
-            name = "items",
-            commandText = "SELECT * FROM dbo.items INNER JOIN (SELECT * FROM dbo.users) hlo ON dbo.items.[user] = hlo.user_id",
-            commandType = "Text",
-            connectionStringSetting = "SqlConnectionString") Item[] items,
         @SQLOutput(
             name = "item",
             commandText = "UPDATE dbo.items SET available = 'false' WHERE listing_date < DATEADD(week, -2, GETDATE())",
