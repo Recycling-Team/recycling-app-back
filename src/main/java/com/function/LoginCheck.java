@@ -31,7 +31,7 @@ public class LoginCheck {
                 commandText = "SELECT * FROM dbo.users WHERE username = @username", 
                 commandType = "Text",
                 parameters = "@username={name}",
-                connectionStringSetting = "SqlConnectionString")
+                connectionStringSetting = "SqlConnectionString") 
             User[] users,
             @SQLOutput(
                 name = "update",
