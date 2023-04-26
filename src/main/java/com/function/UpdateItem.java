@@ -21,7 +21,6 @@ import java.util.Optional;
 
 
 public class UpdateItem {
-//hmm
     @FunctionName("UpdateItem")
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {
