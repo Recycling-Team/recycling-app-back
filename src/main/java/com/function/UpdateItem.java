@@ -28,12 +28,12 @@ public class UpdateItem {
             @SQLInput(
                 name = "updateItem",
                 commandType = "Text",
-                commandText = "SELECT * FROM dbo.items WHERE id = @itemId",
+                commandText = "SELECT * FROM dbo.items WHERE id = @item_id",
                 connectionStringSetting = "SqlConnectionString" 
             )
             @SQLOutput(
             name = "item",
-            commandText = "UPDATE dbo.items WHERE id = @itemId SET available = 'false'",
+            commandText = "UPDATE dbo.items WHERE id = @item_id SET available = 'false'",
             connectionStringSetting = "SqlConnectionString") OutputBinding <Item> item)
             throws JsonParseException, JsonMappingException, IOException {
 
