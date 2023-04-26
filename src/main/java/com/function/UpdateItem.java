@@ -28,9 +28,9 @@ public class UpdateItem {
             HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "update-item") HttpRequestMessage<Optional<String>> request,
             @SQLInput(
                 name = "inputItem",
-                sqlConnectionStringSetting = "SqlConnectionString",
-                commandText = "SELECT * FROM dbo.items WHERE id = @itemId",
-                parameterBindings = {
+                commandType = "Text",
+                commandText = "SELECT * FROM dbo.items WHERE id = @itemId" 
+            )
             @SQLOutput(
             name = "item",
             commandText = "UPDATE dbo.items WHERE id = @itemId SET available = 'false'",
@@ -43,3 +43,4 @@ public class UpdateItem {
     
         return response;
     }
+}
