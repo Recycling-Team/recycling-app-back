@@ -27,9 +27,10 @@ public class UpdateItem {
             @HttpTrigger(name = "req", methods = {
             HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "update-item") HttpRequestMessage<Optional<String>> request,
             @SQLInput(
-                name = "inputItem",
+                name = "updateItem",
                 commandType = "Text",
-                commandText = "SELECT * FROM dbo.items WHERE id = @itemId" 
+                commandText = "SELECT * FROM dbo.items WHERE id = @itemId",
+                connectionStringSetting = "SqlConnectionString" 
             )
             @SQLOutput(
             name = "item",
