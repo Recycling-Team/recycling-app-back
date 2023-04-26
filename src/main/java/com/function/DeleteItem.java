@@ -36,7 +36,7 @@ public class DeleteItem {
             connectionStringSetting = "SqlConnectionString") Item[] items,
         @SQLOutput(
             name = "item",
-            commandText = "UPDATE dbo.items SET visible = 'false' WHERE listing_date < DATEADD(week, -2, GETDATE())",
+            commandText = "UPDATE dbo.items SET available = 'false' WHERE listing_date < DATEADD(week, -2, GETDATE())",
             connectionStringSetting = "SqlConnectionString") OutputBinding <Item> item,
         final ExecutionContext context)
     throws JsonParseException, JsonMappingException, IOException {

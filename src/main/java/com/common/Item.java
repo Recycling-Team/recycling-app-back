@@ -37,9 +37,6 @@ public class Item {
 
     @JsonProperty("condition")
     private int condition;
-    
-    @JsonProperty("visible")
-    private boolean visible;
 
     public Item() {
     }
@@ -57,7 +54,6 @@ public class Item {
         this.user = user;
         this.category = category;
         this.condition = condition;
-        this.visible = visible;
     }
 
     public int getItem_id() {
@@ -148,14 +144,6 @@ public class Item {
         this.condition = condition;
     }
 
-    public boolean getVisible() {
-        return visible;
-    }
-
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
-
     @Override
     public String toString() {
         return "{" +
@@ -170,7 +158,6 @@ public class Item {
                 ", user='" + getUser() + "'" +
                 ", category='" + getCategory() + "'" +
                 ", condition='" + getCondition() + "'" +
-                ", visible='" + getVisible() + "'" +
                 "}";
     }
 
