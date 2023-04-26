@@ -60,7 +60,6 @@ public class Item {
         this.user = user;
         this.category = category;
         this.condition = condition;
-
         this.visible = visible;
     }
 

@@ -37,7 +37,7 @@ public class DeleteItem {
         @SQLOutput(
             name = "item",
             commandText = "items",
-            connectionStringSetting = "SqlConnectionString") OutputBinding < Item > item,
+            connectionStringSetting = "SqlConnectionString") OutputBinding <Item> item,
         final ExecutionContext context)
     throws JsonParseException, JsonMappingException, IOException {
 
