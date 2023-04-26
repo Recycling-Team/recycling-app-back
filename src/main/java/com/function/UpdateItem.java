@@ -31,20 +31,21 @@ public class UpdateItem {
     @FunctionName("UpdateItem")
     public HttpResponseMessage run(
             @HttpTrigger(name = "req", methods = {
-            HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "add-item") HttpRequestMessage<Optional<String>> request,
+            HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "update-item") HttpRequestMessage<Optional<String>> request,
+            @SQLInput(
+                name = "inputItem",
+                sqlConnectionStringSetting = "SqlConnectionString",
+                commandText = "SELECT * FROM dbo.items WHERE id = @itemId",
+                parameterBindings = {
             @SQLOutput(
             name = "item",
-            commandText = "UPDATE dbo.items SET available = 'false'",
+            commandText = "UPDATE dbo.items WHERE id = @itemId SET available = 'false'",
             connectionStringSetting = "SqlConnectionString") OutputBinding <Item> item)
             throws JsonParseException, JsonMappingException, IOException {
-        // Perform the update operation here
-    
-        // Create a response message with a 200 status code and a plain text message
+
         HttpResponseMessage response = request.createResponseBuilder(HttpStatus.OK)
                 .body("Item updated successfully")
                 .build();
     
-        // Return the response message
         return response;
     }
-}
