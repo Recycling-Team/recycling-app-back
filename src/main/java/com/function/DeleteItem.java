@@ -10,33 +10,29 @@ import com.common.Item;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.microsoft.azure.functions.HttpMethod;
-import com.microsoft.azure.functions.HttpRequestMessage;
-import com.microsoft.azure.functions.HttpResponseMessage;
 import com.microsoft.azure.functions.HttpStatus;
 import com.microsoft.azure.functions.OutputBinding;
 import com.microsoft.azure.functions.annotation.AuthorizationLevel;
 import com.microsoft.azure.functions.annotation.FunctionName;
-import com.microsoft.azure.functions.annotation.HttpTrigger;
-import com.microsoft.azure.functions.sql.annotation.SQLInput;
+import com.microsoft.azure.functions.annotation.TimerTrigger;
 import com.microsoft.azure.functions.sql.annotation.SQLOutput;
-import com.microsoft.azure.functions.annotation.*;
-import com.microsoft.azure.functions.*;
-import java.time.*;
+import com.microsoft.azure.functions.ExecutionContext;
 
 public class DeleteItem {
 
-   
+    @FunctionName("DeleteItem")
     public void run(
-        //Timer which executes this function every day 0:00 midnight
+        // Timer which executes this function every day at 0:00 midnight
         @TimerTrigger(name = "timer", schedule = "0 0 0 * * *") String timerInfo,
-        
+
         @SQLOutput(
             name = "item",
             commandText = "UPDATE dbo.items SET available = 'false' WHERE listing_date < DATEADD(week, -2, GETDATE())",
-            connectionStringSetting = "SqlConnectionString") OutputBinding <Item> item,
+            connectionStringSetting = "SqlConnectionString") OutputBinding<Void> output,
+
         final ExecutionContext context)
-    throws JsonParseException, JsonMappingException, IOException {
+        throws JsonParseException, JsonMappingException, IOException {
+
 
         }
-
-    }
+}

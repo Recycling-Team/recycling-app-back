@@ -13,15 +13,8 @@ import com.microsoft.azure.functions.sql.annotation.SQLInput;
 
 import java.util.Optional;
 
-/**
- * Azure Functions with HTTP Trigger.
- */
 public class ItemsByCategory {
-    /**
-     * This function listens at endpoint "/api/HttpTriggerDatabase". Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/HttpTriggerDatabase
-     * 2. curl {your host}/api/HttpTriggerDatabase?name=HTTP%20Query
-     */
+
     @FunctionName("itemsByCategory")
     public HttpResponseMessage run(
             @HttpTrigger(
