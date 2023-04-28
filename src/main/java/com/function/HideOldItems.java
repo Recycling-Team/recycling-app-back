@@ -8,31 +8,30 @@ import com.microsoft.azure.functions.annotation.TimerTrigger;
 import com.microsoft.azure.functions.sql.annotation.SQLInput;
 import com.microsoft.azure.functions.sql.annotation.SQLOutput;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.util.List;
 
-public class DeleteItem {
-    @FunctionName("DeleteItem")
+public class HideOldItems {
+    @FunctionName("HideOldItems")
     public void run(
-        @TimerTrigger(name = "timerInfo", schedule = "0 0 0 * * *") String timerInfo,
+        @TimerTrigger(name = "hideOldItems", schedule = "0 0 * * * *")  String timerInfo,
         @SQLInput(
             name = "items",
             commandText =  "SELECT * FROM dbo.items WHERE available = 'True'",
-            connectionStringSetting = "SqlConnectionString") List<Item> items,
+            connectionStringSetting = "SqlConnectionString") Item[] items,
         @SQLOutput(
             name = "item",
             commandText = "dbo.items",
-            connectionStringSetting = "SqlConnectionString") OutputBinding <Item> Item,
+            connectionStringSetting = "SqlConnectionString") OutputBinding <Item[]> changedItems,
         final ExecutionContext context) {
-
             for (Item item : items) {
-                LocalDate twoWeeksAgo = LocalDate.now(ZoneOffset.UTC).minusWeeks(2);
-                LocalDate itemListingDate = LocalDate.parse(item.getListing_date());
-                
+                String date = item.getListing_date().replace("Z","");
+                LocalDateTime twoWeeksAgo = LocalDateTime.now(ZoneOffset.UTC).minusWeeks(2);
+                LocalDateTime itemListingDate = LocalDateTime.parse(date);
                 if (itemListingDate.isBefore(twoWeeksAgo)) {
                     item.setAvailable("False");
                 }
             }
+            changedItems.setValue(items);
     }
 }

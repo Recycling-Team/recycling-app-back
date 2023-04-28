@@ -25,7 +25,7 @@ public class ItemsByCategory {
             HttpRequestMessage<Optional<String>> request,
             @SQLInput(
                 name = "items",
-                commandText = "SELECT * FROM dbo.items INNER JOIN (SELECT * FROM dbo.users) hlo ON dbo.items.[user] = hlo.user_id WHERE dbo.items.available = 'true' AND dbo.items.category = {category}",
+                commandText = "SELECT * FROM dbo.items WHERE dbo.items.available = 'true' AND dbo.items.category = {category}",
                 commandType = "Text",
                 connectionStringSetting = "SqlConnectionString")
             Item[] items,

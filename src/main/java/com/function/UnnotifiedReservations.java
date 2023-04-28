@@ -31,21 +31,12 @@ public class UnnotifiedReservations {
                         parameters = "@user_id={user_id}", 
                         commandType = "Text", 
                         connectionStringSetting = "SqlConnectionString") FatReservation[] reservations) {
-            for (Item item : items) {
-                    for (FatReservation fatReservation : reservations)
-                            if (item.getItem_id() == fatReservation.getItem_id()) {
-                                    fatReservation.setItem(item);
-                            }
-                            else {
-                                //reservations.remove(1);
-                            }
-            }
-            for (FatReservation fatReservation2 : reservations) {
-                int i = 0;
-                if (fatReservation2.getItem() == null) {
-                        //reservations.remove(fatReservation2);
-                }
-            }
+                        for (Item item : items) {
+                                for (FatReservation fatReservation : reservations)
+                                        if (item.getItem_id() == fatReservation.getItem_id()) {
+                                                fatReservation.setItem(item);
+                                }
+                        }
         return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "application/json").body(reservations).build();
     }
 }

@@ -1,14 +1,10 @@
 package com.common;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FatReservation extends Reservation {
     
-
     private Item item;
-
-
-
+    
     public FatReservation() {
     }
 

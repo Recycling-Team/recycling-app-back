@@ -1,7 +1,6 @@
 package com.function;
 
 import com.common.Reservation;
-import com.common.User;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
