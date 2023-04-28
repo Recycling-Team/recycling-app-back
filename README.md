@@ -31,6 +31,8 @@ Before you get started, make sure you have the following requirements in place:
 # Run the Function locally
 
 In order for the back-end to work locally you need to have specific key values in a local.settings.json file.
+
+
 {
     "IsEncrypted": false,
     "Values": {
