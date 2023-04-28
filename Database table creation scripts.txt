@@ -1,0 +1,181 @@
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[users](
+	[user_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[username] [varchar](50) NOT NULL,
+	[last_login] [varchar](50) NULL,
+ CONSTRAINT [PK_users] PRIMARY KEY CLUSTERED 
+(
+	[user_id] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[categories](
+	[category_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[category] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_categories] PRIMARY KEY CLUSTERED 
+(
+	[category_id] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+
+
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[conditions](
+	[condition_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[condition] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_conditions] PRIMARY KEY CLUSTERED 
+(
+	[condition_id] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ratings](
+	[rating_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[rating] [varchar](50) NOT NULL,
+	[user] [bigint] NOT NULL,
+ CONSTRAINT [PK_ratings] PRIMARY KEY CLUSTERED 
+(
+	[rating_id] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[ratings]  WITH CHECK ADD  CONSTRAINT [FK_ratings_users] FOREIGN KEY([user])
+REFERENCES [dbo].[users] ([user_id])
+GO
+
+ALTER TABLE [dbo].[ratings] CHECK CONSTRAINT [FK_ratings_users]
+GO
+
+
+
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[items](
+	[item_id] [bigint] IDENTITY(1,1) NOT NULL,
+	[item_name] [varchar](50) NOT NULL,
+	[description] [varchar](50) NULL,
+	[pick_time] [varchar](50) NULL,
+	[message] [varchar](150) NULL,
+	[pickup_status] [varchar](50) NULL,
+	[listing_date] [datetime] NOT NULL,
+	[available] [varchar](50) NOT NULL,
+	[user] [bigint] NOT NULL,
+	[category] [bigint] NOT NULL,
+	[condition] [bigint] NOT NULL,
+ CONSTRAINT [PK_items] PRIMARY KEY CLUSTERED 
+(
+	[item_id] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[items] ADD  CONSTRAINT [DEFAULT_items_listing_date]  DEFAULT (getdate()) FOR [listing_date]
+GO
+
+ALTER TABLE [dbo].[items] ADD  CONSTRAINT [DEFAULT_items_available]  DEFAULT ('True') FOR [available]
+GO
+
+ALTER TABLE [dbo].[items]  WITH CHECK ADD  CONSTRAINT [FK_items_categories] FOREIGN KEY([category])
+REFERENCES [dbo].[categories] ([category_id])
+GO
+
+ALTER TABLE [dbo].[items] CHECK CONSTRAINT [FK_items_categories]
+GO
+
+ALTER TABLE [dbo].[items]  WITH CHECK ADD  CONSTRAINT [FK_items_conditions] FOREIGN KEY([condition])
+REFERENCES [dbo].[conditions] ([condition_id])
+GO
+
+ALTER TABLE [dbo].[items] CHECK CONSTRAINT [FK_items_conditions]
+GO
+
+ALTER TABLE [dbo].[items]  WITH CHECK ADD  CONSTRAINT [FK_items_users] FOREIGN KEY([user])
+REFERENCES [dbo].[users] ([user_id])
+GO
+
+ALTER TABLE [dbo].[items] CHECK CONSTRAINT [FK_items_users]
+GO
+
+
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[reservations](
+	[user_id] [bigint] NOT NULL,
+	[item_id] [bigint] NOT NULL,
+	[date] [datetime] NOT NULL,
+	[notification] [varchar](50) NULL,
+ CONSTRAINT [PK_reservations] PRIMARY KEY CLUSTERED 
+(
+	[user_id] ASC,
+	[item_id] ASC
+)WITH (STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[reservations] ADD  CONSTRAINT [DEFAULT_reservations_date]  DEFAULT (getdate()) FOR [date]
+GO
+
+ALTER TABLE [dbo].[reservations] ADD  CONSTRAINT [DEFAULT_reservations_notification]  DEFAULT ('True') FOR [notification]
+GO
+
+ALTER TABLE [dbo].[reservations]  WITH CHECK ADD  CONSTRAINT [FK_reservations_items] FOREIGN KEY([item_id])
+REFERENCES [dbo].[items] ([item_id])
+GO
+
+ALTER TABLE [dbo].[reservations] CHECK CONSTRAINT [FK_reservations_items]
+GO
+
+ALTER TABLE [dbo].[reservations]  WITH CHECK ADD  CONSTRAINT [FK_reservations_users] FOREIGN KEY([user_id])
+REFERENCES [dbo].[users] ([user_id])
+GO
+
+ALTER TABLE [dbo].[reservations] CHECK CONSTRAINT [FK_reservations_users]
+GO
+
+
