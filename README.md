@@ -33,18 +33,18 @@ Before you get started, make sure you have the following requirements in place:
 In order for the back-end to work locally you need to have specific key values in a local.settings.json file.
 
 
-{
-    "IsEncrypted": false,
-    "Values": {
-        "AzureWebJobsStorage": "",
-        "FUNCTIONS_WORKER_RUNTIME": "java",
-        "SqlConnectionString": insert your connection string here
-    },
-    "Host": {
-        "LocalHttpPort": 7071,
-        "CORS": "*"
+    {
+        "IsEncrypted": false,
+        "Values": {
+            "AzureWebJobsStorage": "",
+            "FUNCTIONS_WORKER_RUNTIME": "java",
+            "SqlConnectionString": insert your connection string here
+        },
+        "Host": {
+            "LocalHttpPort": 7071,
+            "CORS": "*"
+        }
     }
-}
 
 Before you deploy your application to Azure Function, let's first test it locally.
 
