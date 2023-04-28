@@ -46,9 +46,7 @@ In order for the back-end to work locally you need to have specific key values i
         }
     }
 
-Before you deploy your application to Azure Function, let's first test it locally.
-
-First you need to package your application into a Jar file:
+You need to package your application:
 
     -mvn clean package
 
