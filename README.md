@@ -5,7 +5,7 @@ The Recycling app is an website where you can giveaway your unwanted belongings,
 Here is a link to the front-side of the project. There will be a own README file that explains how to use it. 
 https://github.com/Recycling-Team/recycling-app-front
 
-The database is in the repository as file named: **Database table creation scripts.txt** 
+The database is in the repository as file named: **[Database table creation scripts.txt]** 
 
 For our projects back-end we used this guide as a reference:
 
