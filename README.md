@@ -15,7 +15,7 @@ https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs
 
 Before you get started, make sure you have the following requirements in place:
 
-    -An Azure account with an active subscription. Create an account for free.
+    -An Azure account with an active subscription. 
 
     -The Java Development Kit, version 11 or 8.
 
