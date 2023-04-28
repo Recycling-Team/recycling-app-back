@@ -15,17 +15,17 @@ https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs
 
 Before you get started, make sure you have the following requirements in place:
 
-  -An Azure account with an active subscription. Create an account for free.
+    -An Azure account with an active subscription. Create an account for free.
 
-  -The Java Development Kit, version 11 or 8.
+    -The Java Development Kit, version 11 or 8.
 
-  -Apache Maven, version 3.0 or above.
+    -Apache Maven, version 3.0 or above.
 
-  -Visual Studio Code on one of the supported platforms.
+    -Visual Studio Code on one of the supported platforms.
 
-  -The Java extension pack
+    -The Java extension pack
 
-  -The Azure Functions extension for Visual Studio Code.
+    -The Azure Functions extension for Visual Studio Code.
   
   
 # Run the Function locally
