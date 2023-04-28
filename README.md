@@ -50,8 +50,8 @@ Before you deploy your application to Azure Function, let's first test it locall
 
 First you need to package your application into a Jar file:
 
-mvn package
+    -mvn clean package
 
-Now that the application is packaged, you can run it using the azure-functions Maven plugin:
+To run the application:
 
-mvn azure-functions:run
+    -mvn azure-functions:run
