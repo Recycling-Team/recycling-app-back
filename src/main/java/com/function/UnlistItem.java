@@ -36,6 +36,7 @@ public class UnlistItem {
                 final ExecutionContext context) {
             if (items.length > 0) {
                 items[0].setAvailable("False");
+                items[0].setPickup_status("True");
             }
         changedItems.setValue(items);
         return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "application/json").build();

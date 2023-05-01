@@ -22,7 +22,7 @@ public class ItembyUser {
                         HttpRequestMessage<Optional<String>> request,
                 @SQLInput(
                         name = "items", 
-                        commandText = "SELECT * FROM dbo.items WHERE [user] = @user", 
+                        commandText = "SELECT * FROM dbo.items WHERE [user] = @user AND pickup_status IS NULL", 
                         commandType = "Text", 
                         parameters = "@user={user}", 
                         connectionStringSetting = "SqlConnectionString") 
