@@ -15,11 +15,17 @@ public class ReservationByItem_Id {
     
     @FunctionName("reservation-by-item_id")
         public HttpResponseMessage run(
-                        @HttpTrigger(name = "req", methods = {
-                                        HttpMethod.GET }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-                        @SQLInput(name = "items", commandText = "SELECT * FROM dbo.reservations WHERE item_id = @item_id AND user_id = @user_id", commandType = "Text", parameters = "@item_id={item_id},@user_id={user_id}", connectionStringSetting = "SqlConnectionString") Reservation[] reservations) {
-                return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "application/json")
-                                .body(reservations)
-                                .build();
+                @HttpTrigger(
+                        name = "req", 
+                        methods = {HttpMethod.GET }, 
+                        authLevel = AuthorizationLevel.ANONYMOUS) 
+                        HttpRequestMessage<Optional<String>> request,
+                @SQLInput(
+                        name = "items", 
+                        commandText = "SELECT * FROM dbo.reservations WHERE item_id = @item_id AND user_id = @user_id", 
+                        commandType = "Text", parameters = "@item_id={item_id},@user_id={user_id}", 
+                        connectionStringSetting = "SqlConnectionString") 
+                    Reservation[] reservations) {
+                return request.createResponseBuilder(HttpStatus.OK).header("Content-Type", "application/json").body(reservations).build();
         }
 }

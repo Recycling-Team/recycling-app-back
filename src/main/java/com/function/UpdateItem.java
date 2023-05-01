@@ -20,12 +20,15 @@ import java.util.Optional;
 public class UpdateItem {
     @FunctionName("UpdateItem")
     public HttpResponseMessage run(
-        @HttpTrigger(name = "req", methods = {
-        HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "update-item") HttpRequestMessage<Optional<String>> request,
+        @HttpTrigger(
+            name = "req", 
+            methods = {HttpMethod.POST }, 
+                authLevel = AuthorizationLevel.ANONYMOUS, 
+            route = "update-item") HttpRequestMessage<Optional<String>> request,
         @SQLOutput(
-        name = "item",
-        commandText = "dbo.items",
-        connectionStringSetting = "SqlConnectionString") OutputBinding <Item> item)
+            name = "item",
+            commandText = "dbo.items",
+            connectionStringSetting = "SqlConnectionString") OutputBinding <Item> item)
         throws JsonParseException, JsonMappingException, IOException {
             String json = request.getBody().get();
             ObjectMapper mapper = new ObjectMapper();

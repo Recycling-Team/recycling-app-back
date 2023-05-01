@@ -29,9 +29,16 @@ public class AddItem {
      */
     @FunctionName("AddItem")
     public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {
-                    HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS, route = "add-item") HttpRequestMessage<Optional<String>> request,
-            @SQLOutput(name = "item", commandText = "items", connectionStringSetting = "SqlConnectionString") OutputBinding<Item> item)
+            @HttpTrigger(
+                name = "req", 
+                methods = {HttpMethod.POST }, 
+                authLevel = AuthorizationLevel.ANONYMOUS, 
+                route = "add-item") HttpRequestMessage<Optional<String>> request,
+            @SQLOutput(
+                name = "item", 
+                commandText = "items", 
+                connectionStringSetting = "SqlConnectionString") 
+                OutputBinding<Item> item)
             throws JsonParseException, JsonMappingException, IOException {
 
         String json = request.getBody().get();

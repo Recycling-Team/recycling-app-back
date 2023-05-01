@@ -20,10 +20,17 @@ import com.microsoft.azure.functions.sql.annotation.SQLOutput;
 public class CollectionStatus {
         @FunctionName("Collection-status-update")
         public HttpResponseMessage run(
-                        @HttpTrigger(name = "req", methods = {
-                                        HttpMethod.POST }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-                        @SQLOutput(name = "update", commandText = "dbo.items", connectionStringSetting = "SqlConnectionString") OutputBinding<Item> item)
-                        throws JsonParseException, JsonMappingException, IOException {
+                @HttpTrigger(
+                        name = "req", 
+                        methods = { HttpMethod.POST }, 
+                        authLevel = AuthorizationLevel.ANONYMOUS) 
+                        HttpRequestMessage<Optional<String>> request,
+                @SQLOutput(
+                        name = "update", 
+                        commandText = "dbo.items", 
+                        connectionStringSetting = "SqlConnectionString") 
+                OutputBinding<Item> item) throws JsonParseException, JsonMappingException, IOException {
+                        
                 String json = request.getBody().get();
                 ObjectMapper mapper = new ObjectMapper();
                 Item i = mapper.readValue(json, Item.class);
