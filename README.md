@@ -17,7 +17,7 @@ Before you get started, make sure you have the following requirements in place:
 
     -An Azure account with an active subscription. 
 
-    -The Java Development Kit, version 11 or 8.
+    -The Java Development Kit, version 11 or above.
 
     -Apache Maven, version 3.0 or above.
 
