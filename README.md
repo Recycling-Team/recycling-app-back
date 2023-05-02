@@ -21,6 +21,8 @@ Before you get started, make sure you have the following requirements in place:
 
 * Apache Maven, version 3.0 or above.
 
+* Azure Core tools 4.x or newer
+
 * Visual Studio Code on one of the supported platforms.
 
 * The Java extension pack
