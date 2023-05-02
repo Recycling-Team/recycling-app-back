@@ -30,6 +30,7 @@ public class HideOldItems {
                 LocalDateTime itemListingDate = LocalDateTime.parse(date);
                 if (itemListingDate.isBefore(twoWeeksAgo)) {
                     item.setAvailable("False");
+                    item.setPickup_status("True");
                 }
             }
             changedItems.setValue(items);
