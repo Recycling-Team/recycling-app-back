@@ -15,17 +15,19 @@ https://learn.microsoft.com/en-us/azure/azure-functions/create-first-function-vs
 
 Before you get started, make sure you have the following requirements in place:
 
-    -An Azure account with an active subscription. 
+* An Azure account with an active subscription. 
 
-    -The Java Development Kit, version 11 or 8.
+* The Java Development Kit, version 11 or above.
 
-    -Apache Maven, version 3.0 or above.
+* Apache Maven, version 3.0 or above.
 
-    -Visual Studio Code on one of the supported platforms.
+* Azure Core tools 4.x or newer
 
-    -The Java extension pack
+* Visual Studio Code on one of the supported platforms.
 
-    -The Azure Functions extension for Visual Studio Code.
+* The Java extension pack
+
+* The Azure Functions extension for Visual Studio Code.
   
   
 # Run the Function locally
@@ -47,9 +49,7 @@ In order for the back-end to work locally you need to have specific key values i
     }
 
 You need to package your application:
-
-    -mvn clean package
+* mvn clean package
 
 To run the application:
-
-    -mvn azure-functions:run
+* mvn azure-functions:run
