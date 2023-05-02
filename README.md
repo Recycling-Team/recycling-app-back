@@ -49,7 +49,9 @@ In order for the back-end to work locally you need to have specific key values i
     }
 
 You need to package your application:
-  - mvn clean package
+   
+    mvn clean package
 
 To run the application:
-  - mvn azure-functions:run
+   
+    mvn azure-functions:run
